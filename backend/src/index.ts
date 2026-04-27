@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
+import { expand } from 'dotenv-expand';
 import candidateRoutes from './routes/candidateRoutes';
 import { uploadFile } from './application/services/fileUploadService';
 import cors from 'cors';
@@ -15,7 +16,7 @@ declare global {
   }
 }
 
-dotenv.config();
+expand(dotenv.config());
 const prisma = new PrismaClient();
 
 export const app = express();
